@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<head>
+    <title>CONNECT 4</title>
+    <link href="static/main.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+    <div class = "grid">
+        {% for col in board %}
+            {% for cell in col %}
+                <div class="cell-{{cell}}"></div>
+            {% endfor %}
+        {% endfor %}
+        
+        {% for i in range(column_full | length) %}
+            <form method = post action = "/ai-game">
+            {% if not column_full[i] %}
+                <button name="column" type="submit" enabled value={{i}}>Add counter</button>
+            {% else %}
+                <button name="column" type="submit" disabled value={{i}}>Add counter</button>
+            {% endif %}
+            </form>
+        {% endfor %}
+
+    {% if gamestate == 1 %}
+        <div>
+            Red win!
+        </div>
+    {% elif gamestate == 2 %}
+        <div>
+            Yellow win!
+        </div>
+    {% elif gamestate == 3 %}
+        <div>
+            Draw!
+        </div>
+    {% endif %}
+    {% if gamestate > 0 %}
+        <form method = post action = "/ai-game">
+            <button name="new-game" value="True" type="submit">New game</button>
+        </form>
+    {% endif %}
+
+</body>
