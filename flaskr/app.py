@@ -40,6 +40,8 @@ def create_app(test_config=None):
                 game.reset_game()
             elif request.form.get('column') != None:
                 column_no = int(request.form.get('column'))
+                gamestate = game.make_move(column_no)
+                #TODO: check gamestate
 
-        return render_template("index.html", board=game.board)
+        return render_template("index.html", board=game.board, column_full=game.check_col_full)
     return app
