@@ -2,18 +2,19 @@
     display: grid;
     grid-template-columns: repeat(7, 110px);
     grid-template-rows: repeat(6, 110px);
-    width: 850px;
+    width: 800px;
     height: 770px;
     margin: 0 auto;
     justify-content: center;
     align-content: center;
     background-color: blue;
+    border:10px solid navy;
 }
 
 .cell-0{
     border:3px solid blue;
     background-color: white;
-    border-spacing: 3px;
+    margin: 5px;
     border-radius: 50%;
     outline:  3px solid navy;
 }
@@ -21,7 +22,7 @@
 .cell-2{
     border:3px solid blue;
     background-color: yellow;
-    border-spacing: 3px;
+    margin: 5px;
     border-radius: 50%;
     outline:  3px solid navy;
 }
@@ -29,25 +30,66 @@
 .cell-1{
     border:3px solid blue;
     background-color: red;
-    border-spacing: 3px;
+    margin: 5px;
     border-radius: 50%;
     outline:  3px solid navy;
 }
 
 .add {
-    height: 100px;
+    height: 75px;
     width: 110px;
-    align-content: center;
-    justify-content: center;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    font-family: Arial, Helvetica, sans-serif;
+    padding: 15px 20px;
+    font-weight: bold;
     border: none !important;
     background: white;
+    
 }
 
 .add:hover {
     background: cornflowerblue;
+    box-shadow: 0px 0px 0px royalblue;
+}
+.end {
+    justify-content: center;
+    align-content: center;
+    margin: 0 auto;
+    height: 100px;
+    width: 100px;
+}
+.new-game {
+    background-color: cornflowerblue;
+    border:2px solid royalblue;
 }
 
-.new-game {
-    height: 200px;
-    width: 100px;
+.title {
+    font-size: 50px;
+    font-weight: bold;
+    text-align: center;
+}
+
+.outcome-red {
+    font-size: 50px;
+    color: red;
+    text-shadow: 1px 1px 1px grey, 2px 2px 1px grey;
+    font-weight: bold;
+    text-align: center;
+}
+
+.outcome-yellow {
+    font-size: 50px;
+    color: yellow;
+    text-shadow: 1px 1px 1px grey, 2px 2px 1px grey;
+    font-weight: bold;
+    text-align: center;
+}
+
+.outcome-draw {
+    font-size: 50px;
+    color: blue;
+    text-shadow: 1px 1px 1px grey, 2px 2px 1px grey;
+    font-weight: bold;
+    text-align: center;
 }

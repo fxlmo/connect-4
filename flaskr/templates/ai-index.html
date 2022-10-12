@@ -1,9 +1,13 @@
 <!DOCTYPE html>
 <head>
-    <title>CONNECT 4</title>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>Connect 4</title>
     <link href="static/main.css" rel="stylesheet" type="text/css">
 </head>
 <body>
+    <div class="title">Connect 4</div>
     <div class = "grid">
         {% for col in board %}
             {% for cell in col %}
@@ -14,30 +18,31 @@
         {% for i in range(column_full | length) %}
             <form method = post action = "/ai-game">
             {% if not column_full[i] %}
-                <button name="column" type="submit" enabled value={{i}}>Add counter</button>
+                <button name="column" type="submit" class = "add" enabled value={{i}}>Add counter</button>
             {% else %}
-                <button name="column" type="submit" disabled value={{i}}>Add counter</button>
+                <button name="column" type="submit" class = "add" disabled value={{i}}>Add counter</button>
             {% endif %}
             </form>
         {% endfor %}
-
+    </div>
     {% if gamestate == 1 %}
-        <div>
+        <div class = "outcome-red">
             Red win!
         </div>
     {% elif gamestate == 2 %}
-        <div>
+        <div class= "outcome-yellow">
             Yellow win!
         </div>
     {% elif gamestate == 3 %}
-        <div>
+        <div class= "outcome-draw">
             Draw!
         </div>
     {% endif %}
+    <div class="end">
     {% if gamestate > 0 %}
         <form method = post action = "/ai-game">
-            <button name="new-game" value="True" type="submit">New game</button>
+            <button name="new-game" value="True" class = "new-game" type="submit">New game</button>
         </form>
     {% endif %}
-
+    </div> 
 </body>

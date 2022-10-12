@@ -1,9 +1,13 @@
 <!DOCTYPE html>
 <head>
-    <title>CONNECT 4</title>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>Connect 4</title>
     <link href="static/main.css" rel="stylesheet" type="text/css">
 </head>
 <body>
+    <div class="title">Connect 4</div>
     <div class = "grid">
         {% for col in board %}
             {% for cell in col %}
@@ -22,22 +26,23 @@
         {% endfor %}
     </div>
     {% if gamestate == 1 %}
-        <div>
-            Red win!
+        <div class="outcome-red">
+            Red wins!
         </div>
     {% elif gamestate == 2 %}
-        <div>
-            Yellow win!
+        <div class="outcome-yellow">
+            Yellow wins!
         </div>
     {% elif gamestate == 3 %}
-        <div>
+        <div class="outcome-draw">
             Draw!
         </div>
     {% endif %}
+    <div class= "end">
     {% if gamestate > 0 %}
         <form method = post action = "/game">
             <button name="new-game" value="True" class="new-game" type="submit">New game</button>
         </form>
     {% endif %}
-
+    </div>
 </body>
