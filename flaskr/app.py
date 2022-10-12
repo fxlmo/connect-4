@@ -52,7 +52,5 @@ def create_app(test_config=None):
                     col_full = [True, True, True, True, True, True, True]
                 else:
                     col_full = game.check_col_full()
-        print(gamestate)
-        print(col_full)
         return render_template("index.html", board=game.board, column_full=col_full,gamestate=gamestate)
     return app
