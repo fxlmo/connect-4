@@ -209,4 +209,4 @@ def main():
     # send board
     # check_win
 
-print(check_win(board_1))
+# print(check_win(board_1))
