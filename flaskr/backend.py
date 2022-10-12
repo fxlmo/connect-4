@@ -2,7 +2,6 @@ from distutils.command.check import check
 import math
 from pprint import pp, pprint
 import random
-from types import new_class
 import numpy as np
 from requests import check_compatibility
 
@@ -291,8 +290,8 @@ class game:
                         value = new_score
                         column = col
                     alpha = max(alpha, value)
-                    # if alpha >= beta:
-                    #     break
+                    if alpha >= beta:
+                        break
                 return column, value
             else:
                 value = math.inf
@@ -304,9 +303,9 @@ class game:
                     if new_score < value:
                         value = new_score
                         column = col
-                    alpha = max(alpha, value)
-                    # if alpha >= beta:
-                    #     break
+                    beta = min(beta, value)
+                    if alpha >= beta:
+                        break
                 return column, value
         
         def score_position(board, colour):
@@ -355,6 +354,8 @@ class game:
                 score += 5
             elif window.count(piece) == 2 and window.count(X) == 2:
                 score += 2
+            elif window.count(piece) == 2 and window.count(X) == 1:
+                score += 1
 
             if window.count(opp_piece) == 3 and window.count(X) == 1:
                 score -= 4
@@ -362,7 +363,7 @@ class game:
             return score
 
         # selected_move = random_move()
-        selected_move = minimax(self.board, 5, 0, 0, True)
+        selected_move = minimax(self.board, 5, -math.inf, math.inf, True)
         print(selected_move)
         return selected_move[0]
 
