@@ -2,30 +2,52 @@
     display: grid;
     grid-template-columns: repeat(7, 110px);
     grid-template-rows: repeat(6, 110px);
-    width: 770px;
-    height: 660px;
+    width: 850px;
+    height: 770px;
     margin: 0 auto;
     justify-content: center;
-    background-color: black;
+    align-content: center;
+    background-color: blue;
 }
 
 .cell-0{
-    border:5px solid black;
+    border:3px solid blue;
     background-color: white;
+    border-spacing: 3px;
     border-radius: 50%;
-    outline:  5px solid black;
+    outline:  3px solid navy;
 }
 
 .cell-2{
-    border:5px solid black;
+    border:3px solid blue;
     background-color: yellow;
+    border-spacing: 3px;
     border-radius: 50%;
-    outline:  5px solid black;
+    outline:  3px solid navy;
 }
 
 .cell-1{
-    border:5px solid black;
+    border:3px solid blue;
     background-color: red;
+    border-spacing: 3px;
     border-radius: 50%;
-    outline:  5px solid black;
+    outline:  3px solid navy;
+}
+
+.add {
+    height: 100px;
+    width: 110px;
+    align-content: center;
+    justify-content: center;
+    border: none !important;
+    background: white;
+}
+
+.add:hover {
+    background: cornflowerblue;
+}
+
+.new-game {
+    height: 200px;
+    width: 100px;
 }
