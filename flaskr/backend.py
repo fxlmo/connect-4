@@ -40,6 +40,18 @@ class game:
             [0,0,0,0,0,0,0]
         ]
         in_progress = True
+    
+    def reset_game(self):
+        curr_player = random.randint(1,2)
+        board       = [
+            [0,0,0,0,0,0,0],
+            [0,0,0,0,0,0,0],
+            [0,0,0,0,0,0,0],
+            [0,0,0,0,0,0,0],
+            [0,0,0,0,0,0,0],
+            [0,0,0,0,0,0,0]
+        ]
+        in_progress = True
 
     def check_win(self):
         horizontal_base = [
