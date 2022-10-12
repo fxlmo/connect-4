@@ -3,8 +3,12 @@ import datetime
 import os
 import pprint
 
-from backend import game
+from idna import check_bidi
+
+import backend
 from flask import Flask, make_response, render_template, request
+
+from flaskr.backend import DRAW
 
 def create_app(test_config=None):
     # create and configure the app
@@ -26,7 +30,7 @@ def create_app(test_config=None):
     except OSError:
         pass
 
-    game = game()
+    game = backend.game()
 
 
     @app.route("/",methods = ["GET","POST"])
@@ -35,13 +39,20 @@ def create_app(test_config=None):
 
     @app.route("/game",methods = ["GET","POST"])
     def route():
+        gamestate = -1
+        col_full = game.check_col_full()
         if request.method == "POST":
             if request.form.get('new-game') != None:
                 game.reset_game()
+                col_full = game.check_col_full()
             elif request.form.get('column') != None:
                 column_no = int(request.form.get('column'))
-                gamestate = game.make_move(column_no)
-                #TODO: check gamestate
-
-        return render_template("index.html", board=game.board, column_full=game.check_col_full)
+                (gamestate) = game.make_move(column_no)
+                if gamestate > 0:
+                    col_full = [True, True, True, True, True, True, True]
+                else:
+                    col_full = game.check_col_full()
+        print(gamestate)
+        print(col_full)
+        return render_template("index.html", board=game.board, column_full=col_full,gamestate=gamestate)
     return app

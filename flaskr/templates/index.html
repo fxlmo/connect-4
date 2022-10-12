@@ -5,81 +5,39 @@
 </head>
 <body>
     <div class = "grid">
-        <div class = "cell"></div>
-        <div class = "cell"></div>
-        <div class = "cell"></div>
-        <div class = "cell"></div>
-        <div class = "cell"></div>
-        <div class = "cell"></div>
-        <div class = "cell"></div>
+        {% for col in board %}
+            {% for cell in col %}
+                <div class="cell-{{cell}}"></div>
+            {% endfor %}
+        {% endfor %}
         
-        
+        {% for i in range(column_full | length) %}
+            <form method = post action = "/game">
+            {% if not column_full[i] %}
+                <button name="column" type="submit" enabled value={{i}}>Add counter</button>
+            {% else %}
+                <button name="column" type="submit" disabled value={{i}}>Add counter</button>
+            {% endif %}
+            </form>
+        {% endfor %}
 
-        <div class = "cell"></div>
-        <div class = "cell"></div>
-        <div class = "cell"></div>
-        <div class = "cell"></div>
-        <div class = "cell"></div>
-        <div class = "cell"></div>
-        <div class = "cell"></div>
-
-
-        <div class = "cell"></div>
-        <div class = "cell"></div>
-        <div class = "cell"></div>
-        <div class = "cell"></div>
-        <div class = "cell"></div>
-        <div class = "cell"></div>
-        <div class = "cell"></div>
-
-
-        <div class = "cell"></div>
-        <div class = "cell"></div>
-        <div class = "cell"></div>
-        <div class = "cell"></div>
-        <div class = "cell"></div>
-        <div class = "cell"></div>
-        <div class = "cell"></div>
-
-
-        <div class = "cell"></div>
-        <div class = "cell"></div>
-        <div class = "cell"></div>
-        <div class = "cell"></div>
-        <div class = "cell"></div>
-        <div class = "cell"></div>
-        <div class = "cell"></div>
-
-
-        <div class = "cell"></div>
-        <div class = "cell"></div>
-        <div class = "cell"></div>
-        <div class = "cell"></div>
-        <div class = "cell"></div>
-        <div class = "cell"></div>
-        <div class = "cell"></div>
-
+    {% if gamestate == 1 %}
+        <div>
+            Red win!
+        </div>
+    {% elif gamestate == 2 %}
+        <div>
+            Yellow win!
+        </div>
+    {% elif gamestate == 3 %}
+        <div>
+            Draw!
+        </div>
+    {% endif %}
+    {% if gamestate > 0 %}
         <form method = post action = "/game">
-            <button name="column" type="submit" value="0">Add counter</button>
+            <button name="new-game" value="True" type="submit">New game</button>
         </form>
-        <form method = post action = "/game">
-            <button name="column" type="submit" value="1">Add Counter</button>
-        </form>
-        <form method = post action = "/game">
-            <button name="column" type="submit" value="2">Add Counter</button>
-        </form>
-        <form method = post action = "/game">
-            <button name="column" type="submit" value="3">Add Counter</button>
-        </form>
-        <form method = post action = "/game">
-            <button name="column" type="submit" value="4">Add Counter</button>
-        </form>
-        <form method = post action = "/game">
-            <button name="column" type="submit" value="5">Add Counter</button>
-        </form>
-        <form method = post action = "/game">
-            <button name="column" type="submit" value="6">Add Counter</button>
-        </form>
-    </div>
+    {% endif %}
 
 </body>

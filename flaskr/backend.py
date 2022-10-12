@@ -1,5 +1,5 @@
 from pprint import pp, pprint
-from random import random
+import random
 import numpy as np
 from requests import check_compatibility
 
@@ -30,8 +30,8 @@ board_2 = [
 
 class game:
     def __init__(self) -> None:
-        curr_player = random.randint(1,2)
-        board       = [
+        self.curr_player = random.randint(1,2)
+        self.board       = [
             [0,0,0,0,0,0,0],
             [0,0,0,0,0,0,0],
             [0,0,0,0,0,0,0],
@@ -39,11 +39,11 @@ class game:
             [0,0,0,0,0,0,0],
             [0,0,0,0,0,0,0]
         ]
-        in_progress = True
+        self.in_progress = True
     
     def reset_game(self):
-        curr_player = random.randint(1,2)
-        board       = [
+        self.curr_player = random.randint(1,2)
+        self.board       = [
             [0,0,0,0,0,0,0],
             [0,0,0,0,0,0,0],
             [0,0,0,0,0,0,0],
@@ -51,7 +51,7 @@ class game:
             [0,0,0,0,0,0,0],
             [0,0,0,0,0,0,0]
         ]
-        in_progress = True
+        self.in_progress = True
 
     def check_win(self):
         horizontal_base = [
@@ -139,14 +139,14 @@ class game:
                             diag_base_1[y][x] = diag_base_1[y-1][x+1] + 1
                         else:
                             diag_base_1[y][x] = 1
-        print('horizontal')
-        pprint(horizontal_base)
-        print('vertical')
-        pprint(vertical_base)
-        print('diag')
-        pprint(diag_base)
-        print('diag_1')
-        pprint(diag_base_1)
+        # print('horizontal')
+        # pprint(horizontal_base)
+        # print('vertical')
+        # pprint(vertical_base)
+        # print('diag')
+        # pprint(diag_base)
+        # print('diag_1')
+        # pprint(diag_base_1)
 
         winner = -1
         horizontal_base = np.array(horizontal_base)
@@ -170,6 +170,8 @@ class game:
             for c in self.check_col_full():
                 if not c:
                     draw = False
+        else:
+            draw = False
         if draw:
             winner = DRAW
         return winner
@@ -203,12 +205,14 @@ class game:
         if not (full_col[col]):
             self.insert_counter(col, self.curr_player)
             gamestate = self.check_win()
+            if self.curr_player == Y: self.curr_player = R
+            else: self.curr_player = Y
             if gamestate == -1:
                 # in progress
                 pass
             else:
                 self.in_progress = False
-            return (self.board, gamestate)
+            return (gamestate)
         else:
             return -1
 

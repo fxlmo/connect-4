@@ -9,9 +9,23 @@
     background-color: black;
 }
 
-.cell{
+.cell-0{
     border:5px solid black;
     background-color: white;
+    border-radius: 50%;
+    outline:  5px solid black;
+}
+
+.cell-2{
+    border:5px solid black;
+    background-color: yellow;
+    border-radius: 50%;
+    outline:  5px solid black;
+}
+
+.cell-1{
+    border:5px solid black;
+    background-color: red;
     border-radius: 50%;
     outline:  5px solid black;
 }
