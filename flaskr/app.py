@@ -8,7 +8,7 @@ from idna import check_bidi
 import backend
 from flask import Flask, make_response, render_template, request
 
-from flaskr.backend import DRAW
+from backend import DRAW
 
 def create_app(test_config=None):
     # create and configure the app

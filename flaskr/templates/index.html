@@ -18,9 +18,9 @@
         {% for i in range(column_full | length) %}
             <form method = post action = "/game">
             {% if not column_full[i] %}
-                <button name="column" type="submit" class = "add" enabled value={{i}}>Add counter</button>
+                <button name="column" type="submit" class = "add" enabled value={{i}}>Add Counter</button>
             {% else %}
-                <button name="column" type="submit" class = "add" disabled value={{i}}>Add counter</button>
+                <button name="column" type="submit" class = "add" disabled value={{i}}>Add Counter</button>
             {% endif %}
             </form>
         {% endfor %}
@@ -41,7 +41,7 @@
     <div class= "end">
     {% if gamestate > 0 %}
         <form method = post action = "/game">
-            <button name="new-game" value="True" class="new-game" type="submit">New game</button>
+            <button name="new-game" value="True" class="new-game" type="submit">New Game</button>
         </form>
     {% endif %}
     </div>
