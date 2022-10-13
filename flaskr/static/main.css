@@ -106,13 +106,15 @@
 }
 
 .home{
-    position: relative;
-    background-image: url("https://pics.me.me/connect-four-no-one-ever-plays-connect-four-mb-30720535.png");
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-    background-size: cover;
     height: 500px;
     width: 100%;
+}
+
+.welcome {
+    font-size: 50px;
+    text-shadow: 1px 1px 1px grey, 2px 2px 1px grey;
+    font-weight: bold;
+    text-align: center;
 }
 
 .pick-game-1{
@@ -120,10 +122,10 @@
 	padding: 10px;
 	background-color: royalblue;
     color: white;
-	border-radius: 16px;
+	border-radius: 25px;
     border: none !important;
-	bottom: 5%;
-	left: 20%;
+	top: 25%;
+	left: 37%;
 	width: 80px;
     transition-duration: 0.4s;
 }
@@ -134,18 +136,18 @@
 	background-color: royalblue;
     color: white;
     border: none !important;
-	border-radius: 16px;
-	bottom: 5%;
-	left: 80%;
+	border-radius: 25px;
+	top: 25%;
+	left: 59%;
 	width: 80px;
     transition-duration: 0.4s;
 }
 
-.home .pick-game-1:hover{
+.pick-game-1:hover{
     background-color: navy;
 }
 
-.home .pick-game-2:hover{
+.pick-game-2:hover{
     background-color: navy;
 }
 
