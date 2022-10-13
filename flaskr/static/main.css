@@ -106,47 +106,61 @@
 }
 
 .home{
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    width: 50%;
+    height: 500px;
+    width: 100%;
+}
+
+.welcome {
+    font-size: 50px;
+    text-shadow: 1px 1px 1px grey, 2px 2px 1px grey;
+    font-weight: bold;
+    text-align: center;
 }
 
 .pick-game-1{
-    top: 50%;
-    left: 30%;
-    transform: translate(-50%, -50%);
-    -ms-transform: translate(-50%, -50%);
-    background-color: royalblue;
+    position: absolute;
+	padding: 10px;
+	background-color: royalblue;
     color: white;
-    font-size: 16px;
-    padding: 12px 24px;
-    border: none;
-    cursor: pointer;
-    border-radius: 5px;
+	border-radius: 25px;
+    border: none !important;
+	top: 25%;
+	left: 37%;
+	width: 80px;
     transition-duration: 0.4s;
 }
 
 .pick-game-2{
-    top: 50%;
-    right: 30%;
-    transform: translate(-50%, -50%);
-    -ms-transform: translate(-50%, -50%);
-    background-color: royalblue;
+    position: absolute;
+	padding: 10px;
+	background-color: royalblue;
     color: white;
-    font-size: 16px;
-    padding: 12px 24px;
-    border: none;
-    cursor: pointer;
-    border-radius: 5px;
+    border: none !important;
+	border-radius: 25px;
+	top: 25%;
+	left: 59%;
+	width: 80px;
     transition-duration: 0.4s;
 }
 
-.home .pick-game-1:hover{
+.pick-game-1:hover{
     background-color: navy;
 }
 
-.home .pick-game-2:hover{
+.pick-game-2:hover{
     background-color: navy;
 }
 
+.show-red-turn {
+    font-size: 30px;
+    color: red;
+    text-shadow: 1px 1px 1px grey, 1px 1px 1px grey;
+    text-align: center;
+}
+
+.show-yellow-turn {
+    font-size: 30px;
+    color: yellow;
+    text-shadow: 1px 1px 1px grey, 1px 1px 1px grey;
+    text-align: center;
+}

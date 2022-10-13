@@ -8,13 +8,23 @@
 </head>
 <body>
     <div class="title">Connect 4</div>
+    {% if gamestate == -1 %}
+        {% if currplayer == 1 %}
+            <div class="show-red-turn">
+                Red's Turn!
+            </div>
+        {% else %}
+            <div class ="show-yellow-turn">
+                Yellow's Turn!
+            </div>
+        {% endif %}
+    {% endif %}
     <div class = "grid">
         {% for col in board %}
             {% for cell in col %}
                 <div class="cell-{{cell}}"></div>
             {% endfor %}
         {% endfor %}
-        
         {% for i in range(column_full | length) %}
             <form method = post action = "/game">
             {% if not column_full[i] %}
