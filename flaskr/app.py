@@ -66,11 +66,7 @@ def create_app(test_config=None):
                 col_full = game.check_col_full(game.board)
             elif request.form.get('column') != None:
                 column_no = int(request.form.get('column'))
-                if game.curr_player == game.ai_colour:
-                    # ai turn
-                    # gamestate = game.main_ai_move()
-                    pass
-                else:
+                if game.curr_player == game.player_colour:
                     (gamestate, game.board) = game.make_move(column_no, game.curr_player, game.board)
                     game.update_player()
                     if gamestate == -1:
