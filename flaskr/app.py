@@ -53,7 +53,7 @@ def create_app(test_config=None):
                 else:
                     col_full = game.check_col_full(game.board)
                 game.update_player()
-        return render_template("index.html", board=game.board, column_full=col_full, gamestate=gamestate)
+        return render_template("index.html", board=game.board, column_full=col_full, gamestate=gamestate, currplayer=game.curr_player)
 
     # 1 player game against ai
     @app.route("/ai-game",methods = ["GET","POST"])
