@@ -253,10 +253,7 @@ class game:
         if not (full_col[col]):
             board = list(self.insert_counter(col, player, board))
             gamestate = self.check_win(board)
-            if gamestate == -1:
-                # in progress
-                pass
-            else:
+            if gamestate != -1:
                 self.in_progress = False
             return (gamestate, board)
         else:
