@@ -35,7 +35,7 @@ board_2 = [
 
 class game:
     def __init__(self, ai=False) -> None:
-        self.curr_player = random.randint(1,2)
+        self.curr_player = R
         self.board       = [
             [0,0,0,0,0,0,0],
             [0,0,0,0,0,0,0],
@@ -54,7 +54,7 @@ class game:
         self.in_progress = True
     
     def reset_game(self, ai=False):
-        self.curr_player = random.randint(1,2)
+        self.curr_player = R
         self.board       = [
             [0,0,0,0,0,0,0],
             [0,0,0,0,0,0,0],

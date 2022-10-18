@@ -1,0 +1,42 @@
+syntax = "proto3";
+
+option java_multiple_files = true;
+option java_package = "io.grpc.examples.routeguide";
+option java_outer_classname = "RouteGuideProto";
+option objc_class_prefix = "RTG";
+
+package connect_4;
+
+service Connect_4 {
+    rpc JoinRoom(JoinRequest) returns (stream JoinResponse) {}
+    rpc Move(MoveRequest) returns(MoveResponse) {}
+    rpc FirstMoveP2(InitRequest) returns(MoveResponse) {}
+    rpc End(MoveRequest) returns(EndRequest) {}
+}
+
+message JoinRequest {
+    string id = 1;
+    int32 colour = 2;
+}
+
+message JoinResponse {
+    string roomid = 1;
+    string clientid = 2;
+    int32 colour = 3;
+}
+
+message MoveRequest {
+    int32 column = 1;
+}
+
+message MoveResponse {
+    int32 column = 1;
+}
+
+message InitRequest {
+    string id = 1;
+}
+
+message EndRequest {
+    bool complete = 1;
+}
