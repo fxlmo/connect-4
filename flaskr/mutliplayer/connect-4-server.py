@@ -34,7 +34,6 @@ class Connect4Servicer(connect_4_pb2_grpc.Connect_4Servicer):
     async def JoinRoom(self, request, context) -> AsyncIterable[connect_4_pb2.JoinResponse]:
         global player_1_id
         global player_2_id
-        print(self.room)
         if not request.id in self.room['members']:
             if len(self.room['members']) < 1:
                 player_1_id = request.id
@@ -47,17 +46,19 @@ class Connect4Servicer(connect_4_pb2_grpc.Connect_4Servicer):
                     else: new_colour = R
                 self.room['members'].append({'id': request.id, 'colour': new_colour})
                 JoinRequest = connect_4_pb2.JoinResponse(roomid=str(self.room['id']), clientid=str(self.room['members']), colour=new_colour)
-            print(self.room)
+            print(str(request.id) + ' has connected!')
+            print('room state:', self.room)
             yield JoinRequest
 
     def End(self, request, context):
         print('End game')
         global interim_move
         interim_move = request.column
-        return connect_4_pb2.EndResponse(complete=True)
+        print('Interim move')
+        return connect_4_pb2.EndRequest(complete=True)
 
     async def Move(self, request, context):
-        print('Move')
+        print('Move to ' + str(request.column))
         global interim_move
         interim_move = request.column
         await asyncio.sleep(1)
@@ -81,6 +82,7 @@ async def serve():
         Connect4Servicer(), server)
     server.add_insecure_port('[::]:50051')
     await server.start()
+    print('Server started!')
     await server.wait_for_termination()
 
 
